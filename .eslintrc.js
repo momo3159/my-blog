@@ -33,11 +33,12 @@ module.exports = {
         "@typescript-eslint",
         "import",
         "jsx-a11y",
+        'prefer-arrow',
         "react-hooks"
     ],
     root: true,
     "rules": {
-        "no- use - before - define": 'off',
+        "no-use-before-define": 'off',
         '@typescript-eslint/no-use-before-define': [
             'error',
         ],
