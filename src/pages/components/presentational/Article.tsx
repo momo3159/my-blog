@@ -5,7 +5,7 @@ type Tag = {
   tagName: string;
   slug: string;
 };
-type Props = {
+export type Props = {
   title: string;
   date: Date;
   tags?: Tag[] | null;
