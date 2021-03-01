@@ -4,6 +4,7 @@ import Header from './components/presentational/Header';
 import Footer from './components/presentational/Footer';
 import Article from './components/presentational/Article';
 import NewArticles from './components/presentational/NewArticles';
+import SiteLinks from './components/presentational/SiteLinks';
 
 // markup
 const IndexPage = ({ data }) => (
@@ -20,6 +21,7 @@ const IndexPage = ({ data }) => (
     ))}
     <NewArticles />
     <Footer />
+    <SiteLinks />
   </>
 );
 
