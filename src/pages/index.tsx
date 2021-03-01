@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Header from './components/presentational/Header';
 import Footer from './components/presentational/Footer';
 import Article from './components/presentational/Article';
@@ -20,6 +20,7 @@ const IndexPage = ({ data }) => (
     ))}
     <Footer />
     <SideBar />
+    <Link to={"/blog/typescript/1"}>waiwai</Link>
   </>
 );
 
