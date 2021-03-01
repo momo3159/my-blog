@@ -20,12 +20,20 @@ type Props = {
 };
 
 const Post = ({ data }) => {
-  const { title, date, tags, body } = data.contentfulBlogPost;
+  const { nodes } = data.allContentfulBlogPost;
 
   return (
     <>
       <Header />
-      <Article title={title} date={date} tags={tags} body={body.body} />
+      {nodes.map((node) => (
+        <Article
+          title={node.title}
+          date={node.date}
+          tags={node.tags}
+          body={node.body.body}
+          key={node.id}
+        />
+      ))}
       <Footer />
     </>
   );
@@ -33,17 +41,20 @@ const Post = ({ data }) => {
 
 export default Post;
 export const query = graphql`
-  query($id: String) {
-    contentfulBlogPost(id: { eq: $id }) {
-      body {
-        body
-      }
-      title
-      slug
-      date
-      tags {
+  query($skip: Int, $unit: Int) {
+    allContentfulBlogPost(limit: $unit, skip: $skip) {
+      nodes {
+        id
+        title
+        tags {
+          slug
+          tagName
+        }
         slug
-        tagName
+        date
+        body {
+          body
+        }
       }
     }
   }
