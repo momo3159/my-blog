@@ -2,10 +2,9 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve('src/templates/post.ts');
-  const tagsTemplate = path.resolve('src/templates/template-tags.ts');
-  const { allContentfulBlogPost, allContentfulTag } = await graphql(`
-    query {
+  const blogPostTemplate = path.resolve('src/templates/post.tsx');
+  const tagsTemplate = path.resolve('src/templates/template-tags.tsx');
+  const {data}  = await graphql(`
       allContentfulBlogPost(limit: 10, skip: 0) {
         totalCount
         nodes {
@@ -23,8 +22,8 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    }
   `);
+  const { allContentfulBlogPost } = data
 
   allContentfulBlogPost.nodes.map((node) => {
     const { body } = node.body;
