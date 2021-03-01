@@ -12,17 +12,33 @@ const TagList = () => (
             totalCount
           }
         }
+        allContentfulTag {
+          nodes {
+            slug
+            tagName
+          }
+        }
       }
     `}
-    render={(data) =>
-      data.allContentfulBlogPost.group.map((tag) => (
-        <div>
-          <Link to={`/blog/tags/${tag.fieldValue}/`} key={tag.fieldValue}>
-            <Tag tagName={tag.fieldValue} usageCount={tag.totalCount} />
-          </Link>
-        </div>
-      ))
-    }
+    render={(data) => {
+      const { allContentfulBlogPost, allContentfulTag } = data;
+
+      const countMap = {};
+      allContentfulBlogPost.group.map((tag) => {
+        countMap[tag.fieldValue] = tag.totalCount;
+      });
+
+      return allContentfulTag.nodes.map((tag) => {
+        return (
+          <Tag
+            tagName={tag.tagName}
+            totalCount={countMap[tag.slug] ? countMap[tag.slug] : 0}
+            slug={tag.slug}
+            key={tag.slug}
+          />
+        );
+      });
+    }}
   />
 );
 

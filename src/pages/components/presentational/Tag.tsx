@@ -3,16 +3,25 @@ import { Link } from 'gatsby';
 
 type Props = {
   tagName: string;
-  usageCount?: number;
+  totalCount?: number;
+  slug: string;
 };
 
 const Tag: FC<Props> = (props) => {
-  const { tagName, usageCount } = props;
+  const { tagName, totalCount, slug } = props;
 
-  return typeof usageCount === 'number' ? (
-    <div>{`${tagName}(${usageCount})`}</div>
-  ) : (
-    <div>{`${tagName}`}</div>
+  if (typeof totalCount === 'number') {
+    return (
+      <Link to={`/blog/posts/${slug}/`}>
+        <div>{`${tagName}(${totalCount})`}</div>
+      </Link>
+    );
+  }
+
+  return (
+    <Link to={`/blog/posts/${slug}/`}>
+      <div>{`${tagName}`}</div>
+    </Link>
   );
 };
 
