@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const { date, slug, title, tags } = node;
 
     createPage({
-      path: slug,
+      path: `/blog/posts/${slug}`,
       component: blogPostTemplate,
       context: {
         title,
