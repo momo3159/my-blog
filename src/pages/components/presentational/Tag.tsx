@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'gatsby';
 
 type Props = {
   tagName: string;
@@ -8,10 +9,10 @@ type Props = {
 const Tag: FC<Props> = (props) => {
   const { tagName, usageCount } = props;
 
-  return usageCount ? (
-    <div>{`${tagName}`}</div>
-  ) : (
+  return typeof usageCount === 'number' ? (
     <div>{`${tagName}(${usageCount})`}</div>
+  ) : (
+    <div>{`${tagName}`}</div>
   );
 };
 

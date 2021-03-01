@@ -3,14 +3,13 @@ import { graphql } from 'gatsby';
 import Header from './components/presentational/Header';
 import Footer from './components/presentational/Footer';
 import Article from './components/presentational/Article';
-import NewArticles from './components/presentational/NewArticles';
-import SiteLinks from './components/presentational/SiteLinks';
+import SideBar from './components/presentational/SideBar';
 
 // markup
 const IndexPage = ({ data }) => (
   <>
     <Header />
-    {data.allContentfulBlogPost.nodes.map((node) => (
+    {data?.allContentfulBlogPost.nodes.map((node) => (
       <Article
         title={node.title}
         date={node.date}
@@ -19,9 +18,8 @@ const IndexPage = ({ data }) => (
         key={node.id}
       />
     ))}
-    <NewArticles />
     <Footer />
-    <SiteLinks />
+    <SideBar />
   </>
 );
 

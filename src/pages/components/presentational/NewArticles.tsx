@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-// import { ContentfulBlogPostConnection } from '../../../../types/graphql-types';
 
 const NewArticles = () => (
   <StaticQuery
