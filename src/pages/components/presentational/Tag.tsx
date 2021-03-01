@@ -2,13 +2,17 @@ import React, { FC } from 'react';
 
 type Props = {
   tagName: string;
-  usageCount: number;
+  usageCount?: number;
 };
 
 const Tag: FC<Props> = (props) => {
   const { tagName, usageCount } = props;
 
-  return <div>{`${tagName}（${usageCount}）`}</div>;
+  return usageCount ? (
+    <div>{`${tagName}`}</div>
+  ) : (
+    <div>{`${tagName}(${usageCount})`}</div>
+  );
 };
 
 export default Tag;
