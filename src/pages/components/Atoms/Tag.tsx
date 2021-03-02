@@ -9,19 +9,16 @@ type Props = {
 
 const Tag: FC<Props> = (props) => {
   const { tagName, totalCount, slug } = props;
-
-  if (typeof totalCount === 'number') {
-    return (
-      <Link to={`/blog/posts/${slug}/`}>
-        <div>{`${tagName}(${totalCount})`}</div>
-      </Link>
-    );
-  }
+  let tagInfo: string;
+  if (totalCount === undefined) tagInfo = `${tagName}`;
+  else tagInfo = `${tagName}(${totalCount})`;
 
   return (
-    <Link to={`/blog/posts/${slug}/`}>
-      <div>{`${tagName}`}</div>
-    </Link>
+    <button className="bg-black mx-1 rounded-full">
+      <Link to={`/blog/${slug}/1`}>
+        <span className="text-white p-2">{tagInfo}</span>
+      </Link>
+    </button>
   );
 };
 

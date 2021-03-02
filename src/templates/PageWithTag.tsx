@@ -49,9 +49,9 @@ const Post: FC<Props> = ({ data }) => {
 
 export default Post;
 export const query = graphql`
-  query($tag: String, $skip: Int, $unit: Int) {
+  query($tagName: String, $skip: Int, $unit: Int) {
     allContentfulBlogPost(
-      filter: { tags: { elemMatch: { slug: { eq: $tag } } } }
+      filter: { tags: { elemMatch: { slug: { eq: $tagName } } } }
       limit: $unit
       skip: $skip
     ) {
