@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import Header from './components/presentational/Header';
-import Footer from './components/presentational/Footer';
-import Article from './components/presentational/Article';
-import SideBar from './components/presentational/SideBar';
+import Header from './components/Organisms/Header';
+import Footer from './components/Organisms/Footer';
+import Article from './components/Organisms/Article';
+import SideBar from './components/Organisms/SideBar';
 
 type Props = {
   data: QueryResult;
@@ -41,9 +41,10 @@ const IndexPage: React.FC<Props> = ({ data }) => (
         key={node.id}
       />
     ))}
-    <Footer />
+    
     <SideBar />
     <Link to="/blog/typescript/1">waiwai</Link>
+    <Footer />
   </>
 );
 

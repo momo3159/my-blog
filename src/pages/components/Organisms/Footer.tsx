@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
 const Footer: FC = () => (
-  <footer>
-    <div>
+  <footer className="bg-black">
+    <div className="text-white">
       このサイトではアクセス解析のためにcookieを使用したGoogle
       Analyticsを使用しています
     </div>

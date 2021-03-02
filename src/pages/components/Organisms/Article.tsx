@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Tag from './Tag';
+import Tag from '../Atoms/Tag';
 
 type Tag = {
   tagName: string;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Tag from './Tag';
+import Tag from '../Atoms/Tag';
 
 type QueryResult = {
   allContentfulBlogPost: {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import SiteLinks from "./SiteLinks"
-import NewArticles from "./NewArticles"
-import TagList from './TagList';
+import SiteLinks from "../Molecules/SiteLinks"
+import NewArticles from "../Molecules/NewArticles"
+import TagList from '../Molecules/TagList';
 
 const SideBar: FC = () => (
   <div>

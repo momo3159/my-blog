@@ -1,25 +1,28 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import Header from '../pages/components/presentational/Header';
-import Footer from '../pages/components/presentational/Footer';
-import Article from '../pages/components/presentational/Article';
+import Header from '../pages/components/Organisms/Header';
+import Footer from '../pages/components/Organisms/Footer';
+import Article from '../pages/components/Organisms/Article';
 
 type Tag = {
   tagName: string;
   slug: string;
 };
-type Context = {
+type Post = {
   title: string;
-  date: Date;
+  date: string;
   tags?: Tag[] | null;
-  body: string;
+  body: {body: string};
+  slug: string
 };
 
 type Props = {
-  pageContext: Context;
+  data: {
+    contentfulBlogPost: Post
+  }
 };
 
-const Post = ({ data }) => {
+const Post: FC<Props> = ({ data }) => {
   const { title, date, tags, body } = data.contentfulBlogPost;
 
   return (
