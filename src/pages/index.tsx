@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
-import Article from './components/Organisms/Article';
+import ArticleCard from './components/Organisms/ArticleCard';
 import SideBar from './components/Organisms/SideBar';
 
 type Props = {
@@ -33,7 +33,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
   <>
     <Header />
     {data?.allContentfulBlogPost.nodes.map((node) => (
-      <Article
+      <ArticleCard
         title={node.title}
         date={node.date}
         body={node.body.body}
@@ -41,7 +41,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
         key={node.id}
       />
     ))}
-    
+
     <SideBar />
     <Link to="/blog/typescript/1">waiwai</Link>
     <Footer />

@@ -17,12 +17,14 @@ const Article: FC<Props> = (props) => {
 
   return (
     <div>
-      <p className="text-gray-400">{date}</p>
-      <h1>{title}</h1>
-      {tags?.map((tag) => (
-        <Tag tagName={tag.tagName} slug={tag.slug} key={tag.tagName} />
-      ))}
-      <main>{body}</main>
+      <div>
+        <p>{date}</p>
+        <h1>{title}</h1>
+        {tags?.map((tag) => (
+          <Tag tagName={tag.tagName} slug={tag.slug} key={tag.tagName} />
+        ))}
+        <main>{body}</main>
+      </div>
     </div>
   );
 };

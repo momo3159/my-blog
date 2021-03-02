@@ -14,9 +14,9 @@ const Tag: FC<Props> = (props) => {
   else tagInfo = `${tagName}(${totalCount})`;
 
   return (
-    <button className="bg-black mx-1 rounded-full">
+    <button>
       <Link to={`/blog/${slug}/1`}>
-        <span className="text-white p-2">{tagInfo}</span>
+        <span>{tagInfo}</span>
       </Link>
     </button>
   );
