@@ -7,7 +7,7 @@ type Tag = {
 };
 export type Props = {
   title: string;
-  date: Date;
+  date: string;
   tags?: Tag[] | null;
   body: string;
 };
@@ -20,7 +20,7 @@ const Article: FC<Props> = (props) => {
       <p>{date}</p>
       <h1>{title}</h1>
       {tags?.map((tag) => (
-        <Tag tagName={tag.tagName} key={tag.tagName}/>
+        <Tag tagName={tag.tagName} slug={tag.slug} key={tag.tagName}/>
       ))}
       <main>{body}</main>
     </>

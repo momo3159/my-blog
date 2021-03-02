@@ -1,8 +1,27 @@
 import React, { FC } from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 import Tag from './Tag';
 
-const TagList = () => (
+type QueryResult = {
+  allContentfulBlogPost: {
+    group: TagInfo[];
+  };
+  allContentfulTag: {
+    nodes: Node[];
+  };
+};
+
+type TagInfo = {
+  fieldValue: string;
+  totalCount: number;
+};
+
+type Node = {
+  slug: string;
+  tagName: string;
+};
+
+const TagList: FC = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -20,24 +39,22 @@ const TagList = () => (
         }
       }
     `}
-    render={(data) => {
+    render={(data: QueryResult) => {
       const { allContentfulBlogPost, allContentfulTag } = data;
 
-      const countMap = {};
+      const countMap: { [tagName: string]: number } = {};
       allContentfulBlogPost.group.map((tag) => {
         countMap[tag.fieldValue] = tag.totalCount;
       });
 
-      return allContentfulTag.nodes.map((tag) => {
-        return (
-          <Tag
-            tagName={tag.tagName}
-            totalCount={countMap[tag.slug] ? countMap[tag.slug] : 0}
-            slug={tag.slug}
-            key={tag.slug}
-          />
-        );
-      });
+      return allContentfulTag.nodes.map((tag) => (
+        <Tag
+          tagName={tag.tagName}
+          totalCount={countMap[tag.slug] ? countMap[tag.slug] : 0}
+          slug={tag.slug}
+          key={tag.slug}
+        />
+      ));
     }}
   />
 );

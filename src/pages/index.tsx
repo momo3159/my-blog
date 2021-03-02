@@ -5,8 +5,31 @@ import Footer from './components/presentational/Footer';
 import Article from './components/presentational/Article';
 import SideBar from './components/presentational/SideBar';
 
+type Props = {
+  data: QueryResult;
+};
+type QueryResult = {
+  allContentfulBlogPost: {
+    totalCount: number;
+    nodes: Node[];
+  };
+};
+type Node = {
+  id: string;
+  body: { body: string };
+  date: string;
+  slug: string;
+  title: string;
+  tags: Tag[] | null;
+};
+
+type Tag = {
+  tagName: string;
+  slug: string;
+};
+
 // markup
-const IndexPage = ({ data }) => (
+const IndexPage: React.FC<Props> = ({ data }) => (
   <>
     <Header />
     {data?.allContentfulBlogPost.nodes.map((node) => (
@@ -20,7 +43,7 @@ const IndexPage = ({ data }) => (
     ))}
     <Footer />
     <SideBar />
-    <Link to={"/blog/typescript/1"}>waiwai</Link>
+    <Link to="/blog/typescript/1">waiwai</Link>
   </>
 );
 
@@ -33,7 +56,6 @@ export const topPageQuery = graphql`
       nodes {
         id
         body {
-          id
           body
         }
         date
