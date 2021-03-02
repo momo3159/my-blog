@@ -47,6 +47,7 @@ const Post: FC<Props> = ({ data }) => {
                   date={node.date}
                   body={node.body.body}
                   tags={node.tags}
+                  slug={node.slug}
                   key={node.id}
                 />
               </div>

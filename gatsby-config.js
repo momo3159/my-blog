@@ -1,3 +1,7 @@
+require('dotenv').config()
+const accessToken = process.env.ACCESS_TOKEN
+const spaceId = process.env.SPACE_ID
+
 module.exports = {
   siteMetadata: {
     title: 'my-blog',
@@ -6,8 +10,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        accessToken: '',
-        spaceId: '',
+        accessToken,
+        spaceId,
       },
     },
     // {

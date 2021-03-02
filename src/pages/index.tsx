@@ -36,22 +36,23 @@ const IndexPage: React.FC<Props> = ({ data }) => (
     <Header />
 
     <Grid container spacing={2}>
-      <Grid container item justify="flex-end" xs={8}>
+      <Grid container item justify="flex-end" xs={12} md={8}>
         {data?.allContentfulBlogPost.nodes.map((node) => (
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8} >
             <div className={styles.card}>
               <ArticleCard
                 title={node.title}
                 date={node.date}
                 body={node.body.body}
                 tags={node.tags}
+                slug={node.slug}
                 key={node.id}
               />
             </div>
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={12} md={2}>
         <SideBar />
       </Grid>
     </Grid>

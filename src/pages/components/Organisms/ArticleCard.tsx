@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'gatsby';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Tag from '../Atoms/Tag';
@@ -14,32 +15,36 @@ export type Props = {
   date: string;
   tags?: Tag[] | null;
   body: string;
+  slug: string;
 };
 
 const Article: FC<Props> = (props) => {
-  const { title, date, tags, body } = props;
+  const { title, date, tags, body, slug } = props;
 
   return (
-    <Paper variant="outlined" elevation={2}>
-      <time className={styles.date}>{date}</time>
-      <h1 className={styles.title}>{title}</h1>
-      <div className={styles.container}>
-        <Grid container spacing={1}>
-          {tags?.map((tag) => (
-            <Grid item>
-              <Tag
-                tagName={tag.tagName}
-                slug={tag.slug}
-                fontSize="12px"
-                key={tag.tagName}
-              />
+    <div className={styles.card}>
+      <Link to={`/blog/posts/${slug}`}>
+        <Paper variant="outlined" elevation={2}>
+          <time className={styles.date}>{date}</time>
+          <h1 className={styles.title}>{title}</h1>
+          <div className={styles.container}>
+            <Grid container spacing={1}>
+              {tags?.map((tag) => (
+                <Grid item>
+                  <Tag
+                    tagName={tag.tagName}
+                    slug={tag.slug}
+                    fontSize="12px"
+                    key={tag.tagName}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </div>
-
-      <main className={styles.main}>{body}</main>
-    </Paper>
+          </div>
+          <main className={styles.main}>{body}</main>
+        </Paper>
+      </Link>
+    </div>
   );
 };
 
