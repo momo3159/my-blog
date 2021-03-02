@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
+import styles from "./SiteLinks.module.css"
 
 const SiteLinks: FC = () => {
   const links = [
-    { name: 'ポートフォリオ', url: '' },
-    { name: 'Twitter', url: 'https://twitter.com/Tomm7282' },
-    { name: 'GitHub', url: 'https://github.com/momo3159' },
-    { name: 'AtCoder', url: 'https://atcoder.com.tommy3' },
+    { name: 'ポートフォリオ', url: 'https://momo3159.github.io/tommy-portfolio/' },
+    { name: 'Twitter', url: 'https://twitter.com/Tomm7282/' },
+    { name: 'GitHub', url: 'https://github.com/momo3159/' },
+    { name: 'AtCoder', url: 'https://atcoder.com/tommy3/' },
   ];
-
+  console.log(styles)
   return (
     <>
+      <h3>リンク</h3>
       {links.map((link) => (
-        <a href={link.url}>{link.name}</a>
+        <a href={link.url} className={styles.link}>{link.name}</a>
       ))}
     </>
   );

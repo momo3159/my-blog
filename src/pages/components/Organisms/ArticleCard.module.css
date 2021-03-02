@@ -1,0 +1,30 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.date {
+  display: block;
+  color: #bdbdbd;
+  margin-top: 15px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+.title {
+  color: #7225d6;
+  font-size: 30px;
+  font-weight: 400;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.main {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  word-wrap:break-word;
+}

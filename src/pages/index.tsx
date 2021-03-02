@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import Grid from '@material-ui/core/Grid';
 import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
 import ArticleCard from './components/Organisms/ArticleCard';
 import SideBar from './components/Organisms/SideBar';
+import styles from './index.module.css';
 
 type Props = {
   data: QueryResult;
@@ -32,18 +34,27 @@ type Tag = {
 const IndexPage: React.FC<Props> = ({ data }) => (
   <>
     <Header />
-    {data?.allContentfulBlogPost.nodes.map((node) => (
-      <ArticleCard
-        title={node.title}
-        date={node.date}
-        body={node.body.body}
-        tags={node.tags}
-        key={node.id}
-      />
-    ))}
 
-    <SideBar />
-    <Link to="/blog/typescript/1">waiwai</Link>
+    <Grid container spacing={2}>
+      <Grid container item justify="flex-end" xs={8}>
+        {data?.allContentfulBlogPost.nodes.map((node) => (
+          <Grid item xs={8}>
+            <div className={styles.card}>
+              <ArticleCard
+                title={node.title}
+                date={node.date}
+                body={node.body.body}
+                tags={node.tags}
+                key={node.id}
+              />
+            </div>
+          </Grid>
+        ))}
+      </Grid>
+      <Grid item xs={2}>
+        <SideBar />
+      </Grid>
+    </Grid>
     <Footer />
   </>
 );

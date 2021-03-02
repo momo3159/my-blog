@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import Grid from '@material-ui/core/Grid';
 import Tag from '../Atoms/Tag';
 
 type QueryResult = {
@@ -47,14 +48,23 @@ const TagList: FC = () => (
         countMap[tag.fieldValue] = tag.totalCount;
       });
 
-      return allContentfulTag.nodes.map((tag) => (
-        <Tag
-          tagName={tag.tagName}
-          totalCount={countMap[tag.slug] ? countMap[tag.slug] : 0}
-          slug={tag.slug}
-          key={tag.slug}
-        />
-      ));
+      return (
+        <>
+          <h3>タグ</h3>
+          <Grid container direction="row" justify="flex-start" spacing={1}>
+            {allContentfulTag.nodes.map((tag) => (
+              <Grid item>
+                <Tag
+                  tagName={tag.tagName}
+                  totalCount={countMap[tag.slug] ? countMap[tag.slug] : 0}
+                  slug={tag.slug}
+                  key={tag.slug}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </>
+      );
     }}
   />
 );

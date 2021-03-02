@@ -1,18 +1,13 @@
 import { Link } from 'gatsby';
 import React, { FC } from 'react';
-import AppBar from "@material-ui/core/AppBar"
-import theme from "../../../styles/theme"
-import {MuiThemeProvider} from '@material-ui/core/styles'
+import styles from "./Header.module.css"
 
 const Header: FC = () => (
-  <MuiThemeProvider theme={theme} >
-    <AppBar color="primary" position="fixed">
-      <Link to="/" style={{color: "white"}}>
-        <p>Tommy&apos;s Blog</p>
-      </Link>
-    </AppBar>
-  </MuiThemeProvider>
-  
+  <header className={styles.header}>
+    <Link to="/" style={{ color: 'white' }}>
+      <p className={styles.p}>Tommy&apos;s Blog</p>
+    </Link>
+  </header>
 );
 
 export default Header;

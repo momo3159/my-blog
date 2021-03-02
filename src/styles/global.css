@@ -1,0 +1,18 @@
+body {
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-x: hidden;
+}
+/* #___gatsby {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+} */
+
+
+a {
+  text-decoration: none;
+}
+

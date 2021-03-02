@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import styles from './NewArticles.module.css';
 
 type QueryResult = {
   allContentfulBlogPost: { nodes: Node[] };
@@ -20,20 +21,31 @@ const NewArticles: FC = () => (
             id
             slug
             title
+            date
           }
         }
       }
     `}
-    render={(data: QueryResult) =>
-      data.allContentfulBlogPost.nodes.map((node) => (
-        <>
-          <Link to={`/blog/posts/${node.slug}/`} key={node.id}>
-            {node.title}
-          </Link>
-          <br />
-        </>
-      ))
-    }
+    render={(data: QueryResult) => (
+      <>
+        <h3>最新記事</h3>
+        {data.allContentfulBlogPost.nodes.map((node) => (
+          <>
+            <Link
+              to={`/blog/posts/${node.slug}/`}
+              className={styles.link}
+              key={node.id}
+            >
+              <time className={styles.date}>{node.date}</time>
+              <br />
+              <span>{node.title}</span>
+            </Link>
+
+            <hr />
+          </>
+        ))}
+      </>
+    )}
   />
 );
 

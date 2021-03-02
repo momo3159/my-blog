@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { Link } from 'gatsby';
+import styles from './Tag.module.css';
 
 type Props = {
   tagName: string;
   totalCount?: number;
   slug: string;
+  fontSize?: string;
 };
 
 const Tag: FC<Props> = (props) => {
@@ -13,12 +15,12 @@ const Tag: FC<Props> = (props) => {
   if (totalCount === undefined) tagInfo = `${tagName}`;
   else tagInfo = `${tagName}(${totalCount})`;
 
+ 
+  console.log(styles)
   return (
-    <button>
-      <Link to={`/blog/${slug}/1`}>
-        <span>{tagInfo}</span>
-      </Link>
-    </button>
+    <Link to={`/blog/${slug}/1`} className={styles.button} style={{fontSize: props.fontSize}}>
+      {tagInfo}
+    </Link>
   );
 };
 

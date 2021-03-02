@@ -2,13 +2,9 @@
   color: white;
   text-align: center;
   font-size: 0.5em;
+  margin-bottom: 0;
 }
 
-footer {
+.footer {
   background-color: #212121;
-  width: 100vw;  
-  overflow-x: hidden;
-  left: 0;
-  right: 0;
-  position: fixed;
 }
