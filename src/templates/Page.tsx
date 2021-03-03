@@ -65,7 +65,7 @@ const Page: FC<Props> = ({ data, pageContext }) => {
 
             <Grid container item xs={12} justify="center">
               <Pagination
-                currentIndex={skip / unit + 1}
+                currentIndex={Math.floor(skip / unit) + 1}
                 totalPageNumber={totalCount}
               />
             </Grid>
