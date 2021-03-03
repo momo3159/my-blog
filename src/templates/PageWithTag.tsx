@@ -7,6 +7,7 @@ import ArticleCard from '../pages/components/Organisms/ArticleCard';
 import SideBar from '../pages/components/Organisms/SideBar';
 import styles from './PageWithTag.module.css';
 import parser from '../mdParser';
+import Pagination from '../pages/components/Organisms/Pagination';
 
 type Props = {
   data: QueryResult;
@@ -17,6 +18,7 @@ type PageContext = {
   tagName: string;
   skip: number;
   unit: number;
+  totalTags: number;
 };
 
 type QueryResult = {
@@ -41,16 +43,16 @@ type Tag = {
 
 const PageWithTag: FC<Props> = ({ data, pageContext }) => {
   const { nodes } = data.allContentfulBlogPost;
-  const { tagName } = pageContext;
-
+  const { tagName, skip, unit, totalTags } = pageContext;
+  console.log(totalTags)
   return (
     <>
       <Header />
       <h1 className={styles.tagHeading}>Tag: {tagName}</h1>
       <Grid container spacing={2}>
         <Grid container item justify="flex-end" xs={12} md={8}>
-          {nodes.map((node) => (
-            <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={8}>
+            {nodes.map((node) => (
               <div className={styles.card}>
                 <ArticleCard
                   title={node.title}
@@ -61,8 +63,16 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
                   key={node.id}
                 />
               </div>
+            ))}
+
+            <Grid container item xs={12} justify="center">
+              <Pagination
+                currentIndex={skip / unit + 1}
+                totalPageNumber={totalTags}
+                slug={tagName}
+              />
             </Grid>
-          ))}
+          </Grid>
         </Grid>
         <Grid item xs={12} md={2}>
           <SideBar />

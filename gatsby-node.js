@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   allTags.group.forEach((tag) => {
-    console.log(tag.fieldValue);
+    console.log(tag.totalCount);
     const totalPageNumberInCategory = Math.ceil(tag.totalCount / unit);
     range(1, totalPageNumberInCategory).map((index) => {
       createPage({
@@ -72,6 +72,7 @@ exports.createPages = async ({ graphql, actions }) => {
           skip: unit * index - 1,
           unit,
           tagName: tag.fieldValue,
+          totalTags: tag.totalCount
         },
       });
     });

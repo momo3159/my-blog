@@ -5,6 +5,7 @@ import styles from './Pagination.module.css';
 type Props = {
   currentIndex: number;
   totalPageNumber: number;
+  slug?: string;
 };
 const THRESHOLD = 4; // currentIndexからTHRESHOLD分前からの番号のpaginatioを表示
 
@@ -12,11 +13,15 @@ const range = (start: number, end: number): number[] =>
   [...Array(end - start + 1).keys()].map((index) => index + start);
 
 const Pagination: FC<Props> = (props) => {
-  const { totalPageNumber, currentIndex } = props;
+  const { totalPageNumber, currentIndex, slug } = props;
+
+  let path;
+  if (slug) path = `/blog/${slug}`;
+  else path = '/blog/pages';
 
   if (totalPageNumber < 2) {
     return (
-      <Link to="/" className={styles.current}>
+      <Link to={slug ? `${path}/1` : '/'} className={styles.current}>
         1
       </Link>
     );
@@ -28,11 +33,11 @@ const Pagination: FC<Props> = (props) => {
       if (currentIndex === pageNumber) style = styles.current;
 
       return pageNumber === 1 ? (
-        <Link to="/" className={style}>
+        <Link to={slug ? `${path}/1` : '/'} className={style}>
           {pageNumber}
         </Link>
       ) : (
-        <Link to={`/blog/pages/${pageNumber}`} className={style}>
+        <Link to={`${path}/${pageNumber}`} className={style}>
           {pageNumber}
         </Link>
       );
@@ -48,20 +53,20 @@ const Pagination: FC<Props> = (props) => {
     start = end - 9;
   }
 
-  return ( range(start, end).map((pageNumber) => {
+  return range(start, end).map((pageNumber) => {
     let style = styles.button;
     if (currentIndex === pageNumber) style = styles.current;
 
     return pageNumber === 1 ? (
-      <Link to="/" className={style}>
+      <Link to={slug ? `${path}/1` : '/'} className={style}>
         {pageNumber}
       </Link>
     ) : (
-      <Link to={`/blog/pages/${pageNumber}`} className={style}>
+      <Link to={`${path}/${pageNumber}`} className={style}>
         {pageNumber}
       </Link>
     );
-  }))
+  });
 };
 
 export default Pagination;
