@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
+import { Helmet } from 'react-helmet';
 import SideBar from '../pages/components/Organisms/SideBar';
 import Header from '../pages/components/Organisms/Header';
 import Footer from '../pages/components/Organisms/Footer';
@@ -32,7 +33,7 @@ type Props = {
 };
 
 const Post: FC<Props> = ({ data }) => {
-  const { title, date, tags, body } = data.currentPost;
+  const { title, date, tags, body, slug } = data.currentPost;
   let { nextPost: next, prevPost: prev } = data;
   if (next?.title.length > 10)
     next = {
@@ -48,6 +49,26 @@ const Post: FC<Props> = ({ data }) => {
 
   return (
     <>
+      <Helmet
+        title={title}
+        meta={[
+          { property: 'og-title', content: title },
+          { property: 'og:type', content: 'blog' },
+          {
+            property: 'og:url',
+            content: `https://t0mmy3.vercel.app/blog/posts/${slug}`,
+          },
+          { property: 'og:description', content: body.body },
+          { property: 'og:site_name', content: "Tommy's Blog" },
+          {
+            property: 'og:image',
+            content: `https://og-image-five-mu.vercel.app/${title}.jpeg?theme=dark&md=1&fontSize=100px`,
+          },
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:site', content: '@Tomm7282' },
+        ]}
+      />
+
       <Header />
       <Grid container spacing={6}>
         <Grid container item xs={12} md={8} justify="flex-end">
