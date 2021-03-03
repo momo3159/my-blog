@@ -16,7 +16,6 @@ const Tag: FC<Props> = (props) => {
   else tagInfo = `${tagName}(${totalCount})`;
 
  
-  console.log(styles)
   return (
     <Link to={`/blog/${slug}/1`} className={styles.button} style={{fontSize: props.fontSize}}>
       {tagInfo}

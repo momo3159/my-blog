@@ -49,7 +49,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const totalPageNumber = Math.ceil(allContentfulBlogPost.totalCount / unit);
 
   for (let i = 2; i <= totalPageNumber; i++) {
-    console.log(unit * index - 1);
     createPage({
       path: `/blog/pages/${index}`,
       component: blogPageTemplate,

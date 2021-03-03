@@ -6,7 +6,6 @@ import Header from '../pages/components/Organisms/Header';
 import Footer from '../pages/components/Organisms/Footer';
 import Article from '../pages/components/Organisms/Article';
 import parser from '../mdParser';
-import Pagination from '../pages/components/Organisms/Pagination';
 
 type Tag = {
   tagName: string;
