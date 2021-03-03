@@ -64,10 +64,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const totalPageNumberInCategory = Math.ceil(tag.totalCount / unit);
     for (let i = 1; i <= totalPageNumberInCategory; i++) {
       createPage({
-        path: `/blog/${tag.fieldValue}/${index}`,
+        path: `/blog/${tag.fieldValue}/${i}`,
         component: blogPageWithTagTemplate,
         context: {
-          skip: unit * (index - 1),
+          skip: unit * (i - 1),
           unit,
           tagName: tag.fieldValue,
           totalTags: tag.totalCount,

@@ -41,7 +41,7 @@ type Tag = {
 const Page: FC<Props> = ({ data, pageContext }) => {
   const { nodes, totalCount } = data.allContentfulBlogPost;
   const { skip, unit } = pageContext;
-  console.log(totalCount);
+
 
   return (
     <>
@@ -51,14 +51,13 @@ const Page: FC<Props> = ({ data, pageContext }) => {
         <Grid container item justify="flex-end" xs={12} md={8}>
           <Grid item xs={12} md={8}>
             {nodes.map((node) => (
-              <div className={styles.card}>
+              <div className={styles.card} key={node.id}>
                 <ArticleCard
                   title={node.title}
                   date={node.date}
                   body={parser(node.body.body)}
                   tags={node.tags}
                   slug={node.slug}
-                  key={node.id}
                 />
               </div>
             ))}

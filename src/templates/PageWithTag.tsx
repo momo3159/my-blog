@@ -53,14 +53,13 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
         <Grid container item justify="flex-end" xs={12} md={8}>
           <Grid item xs={12} md={8}>
             {nodes.map((node) => (
-              <div className={styles.card}>
+              <div className={styles.card} key={node.id}>
                 <ArticleCard
                   title={node.title}
                   date={node.date}
                   body={parser(node.body.body)}
                   tags={node.tags}
                   slug={node.slug}
-                  key={node.id}
                 />
               </div>
             ))}
@@ -68,7 +67,7 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
             <Grid container item xs={12} justify="center">
               <Pagination
                 currentIndex={Math.floor(skip / unit) + 1}
-                totalPageNumber={Math.floor(totalTags / 6) + 1}
+                totalPageNumber={Math.ceil(totalTags / 6)}
                 slug={tagName}
               />
             </Grid>

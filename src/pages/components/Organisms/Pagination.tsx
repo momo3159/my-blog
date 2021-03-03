@@ -9,40 +9,47 @@ type Props = {
 };
 const THRESHOLD = 4; // currentIndexからTHRESHOLD分前からの番号のpaginatioを表示
 
-const range = (start: number, end: number): number[] | [] => {
-  [...Array(Math.max(0, end - start + 1)).keys()].map((index) => index + start);
-};
+const getBasePath = (slug: string | undefined): string => {
+  if (slug) {
+    return `/blog/${slug}`;
+  }
 
+  return '/blog/pages';
+};
 const Pagination: FC<Props> = (props) => {
   const { totalPageNumber, currentIndex, slug } = props;
-
-  let path;
-  if (slug) path = `/blog/${slug}`;
-  else path = '/blog/pages';
+  const basePath = getBasePath(slug);
 
   if (totalPageNumber < 2) {
     return (
-      <Link to={slug ? `${path}/1` : '/'} className={styles.current}>
+      <Link to={slug ? `${basePath}/1` : '/'} className={styles.current}>
         1
       </Link>
     );
   }
 
   if (totalPageNumber < 11) {
-    return range(1, totalPageNumber).map((pageNumber) => {
+    const elems = [];
+    for (let pageNumber = 1; pageNumber <= totalPageNumber; pageNumber++) {
       let style = styles.button;
       if (currentIndex === pageNumber) style = styles.current;
 
-      return pageNumber === 1 ? (
-        <Link to={slug ? `${path}/1` : '/'} className={style}>
-          {pageNumber}
-        </Link>
-      ) : (
-        <Link to={`${path}/${pageNumber}`} className={style}>
-          {pageNumber}
-        </Link>
-      );
-    });
+      if (pageNumber === 1) {
+        elems.push(
+          <Link to={slug ? `${basePath}/1` : '/'} className={style}>
+            {pageNumber}
+          </Link>,
+        );
+      } else {
+        elems.push(
+          <Link to={`${path}/${pageNumber}`} className={style}>
+            {pageNumber}
+          </Link>,
+        );
+      }
+    }
+
+    return elems;
   }
 
   let start = currentIndex - THRESHOLD;
@@ -54,20 +61,27 @@ const Pagination: FC<Props> = (props) => {
     start = end - 9;
   }
 
-  return range(start, end).map((pageNumber) => {
+  const elems = [];
+  for (let pageNumber = start; start <= end; start++) {
     let style = styles.button;
     if (currentIndex === pageNumber) style = styles.current;
 
-    return pageNumber === 1 ? (
-      <Link to={slug ? `${path}/1` : '/'} className={style}>
-        {pageNumber}
-      </Link>
-    ) : (
-      <Link to={`${path}/${pageNumber}`} className={style}>
-        {pageNumber}
-      </Link>
-    );
-  });
+    if (pageNumber === 1) {
+      elems.push(
+        <Link to={slug ? `${basePath}/1` : '/'} className={style}>
+          {pageNumber}
+        </Link>,
+      );
+    } else {
+      elems.push(
+        <Link to={`${basePath}/${pageNumber}`} className={style}>
+          {pageNumber}
+        </Link>,
+      );
+    }
+  }
+
+  return elems;
 };
 
 export default Pagination;
