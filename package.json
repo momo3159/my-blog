@@ -17,7 +17,7 @@
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "fix": "npm run -s format && npm run -s lint:fix",
     "format": "prettier --write --loglevel=warn 'src/**/*.{js,jsx,ts,tsx,gql,graphql,json}'",
-    "lint:conflict": "eslint--print-config.eslintrc.js | eslint-config-prettier-check",
+    "lint:conflict": "eslint--print-config.eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
