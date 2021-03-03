@@ -9,7 +9,15 @@ import styles from './PageWithTag.module.css';
 
 type Props = {
   data: QueryResult;
+  pageContext: PageContext;
 };
+
+type PageContext = {
+  tagName: string;
+  skip: number;
+  unit: number;
+};
+
 type QueryResult = {
   allContentfulBlogPost: {
     totalCount: number;
@@ -30,13 +38,15 @@ type Tag = {
   slug: string;
 };
 
-const PageWithTag: FC<Props> = ({ data }) => {
+const PageWithTag: FC<Props> = ({ data, pageContext }) => {
   const { nodes } = data.allContentfulBlogPost;
+  const { tagName } = pageContext;
+  console.log(pageContext);
 
   return (
     <>
       <Header />
-
+      <h2 className={styles.tagHeading}>Tag: {tagName}</h2>
       <Grid container spacing={2}>
         <Grid container item justify="flex-end" xs={12} md={8}>
           {nodes.map((node) => (

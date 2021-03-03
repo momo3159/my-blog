@@ -3,6 +3,10 @@
   margin-top: 3vh;
 }
 
+.tagHeading {
+  text-align: center;
+}
+
 @media screen and (max-width: 960px) {
   .card{ 
     width: 80%;
