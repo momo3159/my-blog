@@ -1,0 +1,18 @@
+.date {
+  font-size: 13px;
+  color: #bdbdbd;
+}
+.link {
+  display: block; 
+  color: #212121;
+}
+.link:hover span{
+  color: #2196f3;
+}
+.link:hover .date{
+  color: #212121;
+}
+
+
+
+

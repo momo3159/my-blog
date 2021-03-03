@@ -1,0 +1,32 @@
+.article {
+  width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+  .article { 
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3vh;
+  }
+}
+
+
+.date {
+  font-size: 13px;
+  color: #bdbdbd;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.main {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  word-wrap:break-word;
+}
+
+.link:hover {
+  color: #2196f3;
+}
