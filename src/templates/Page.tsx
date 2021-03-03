@@ -6,6 +6,7 @@ import Footer from '../pages/components/Organisms/Footer';
 import ArticleCard from '../pages/components/Organisms/ArticleCard';
 import SideBar from '../pages/components/Organisms/SideBar';
 import styles from './Page.module.css';
+import parser from '../mdParser';
 
 type Props = {
   data: QueryResult;
@@ -45,7 +46,7 @@ const Page: FC<Props> = ({ data }) => {
                 <ArticleCard
                   title={node.title}
                   date={node.date}
-                  body={node.body.body}
+                  body={parser(node.body.body)}
                   tags={node.tags}
                   slug={node.slug}
                   key={node.id}

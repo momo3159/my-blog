@@ -1,4 +1,6 @@
 .p {
+  padding-top: 15px;
+  padding-bottom: 20px;
   color: white;
   text-align: center;
   font-size: 0.5em;
@@ -6,5 +8,6 @@
 }
 
 .footer {
+  margin-top: 20vh;
   background-color: #212121;
 }

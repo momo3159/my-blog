@@ -18,7 +18,7 @@ const NewArticles: FC = () => (
   <StaticQuery
     query={graphql`
       query {
-        allContentfulBlogPost(sort: {order: DESC, fields: date}) {
+        allContentfulBlogPost(sort: {order: DESC, fields: date}){
           nodes {
             id
             slug

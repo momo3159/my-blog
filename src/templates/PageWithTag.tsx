@@ -6,6 +6,7 @@ import Footer from '../pages/components/Organisms/Footer';
 import ArticleCard from '../pages/components/Organisms/ArticleCard';
 import SideBar from '../pages/components/Organisms/SideBar';
 import styles from './PageWithTag.module.css';
+import parser from '../mdParser';
 
 type Props = {
   data: QueryResult;
@@ -41,12 +42,11 @@ type Tag = {
 const PageWithTag: FC<Props> = ({ data, pageContext }) => {
   const { nodes } = data.allContentfulBlogPost;
   const { tagName } = pageContext;
-  console.log(pageContext);
 
   return (
     <>
       <Header />
-      <h2 className={styles.tagHeading}>Tag: {tagName}</h2>
+      <h1 className={styles.tagHeading}>Tag: {tagName}</h1>
       <Grid container spacing={2}>
         <Grid container item justify="flex-end" xs={12} md={8}>
           {nodes.map((node) => (
@@ -55,7 +55,7 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
                 <ArticleCard
                   title={node.title}
                   date={node.date}
-                  body={node.body.body}
+                  body={parser(node.body.body)}
                   tags={node.tags}
                   slug={node.slug}
                   key={node.id}

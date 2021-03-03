@@ -5,6 +5,7 @@ import SideBar from '../pages/components/Organisms/SideBar';
 import Header from '../pages/components/Organisms/Header';
 import Footer from '../pages/components/Organisms/Footer';
 import Article from '../pages/components/Organisms/Article';
+import parser from '../mdParser';
 
 type Tag = {
   tagName: string;
@@ -45,7 +46,8 @@ const Post: FC<Props> = ({ data }) => {
       ...prev,
       title: `${prev?.title?.slice(0, 10)}...`,
     };
-  console.log(title);
+  console.log(parser(body.body));
+
 
   return (
     <>
@@ -57,7 +59,7 @@ const Post: FC<Props> = ({ data }) => {
               title={title}
               date={date}
               tags={tags}
-              body={body.body}
+              body={parser(body.body)}
               prev={prev}
               next={next}
             />

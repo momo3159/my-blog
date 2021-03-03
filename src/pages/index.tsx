@@ -6,6 +6,7 @@ import Footer from './components/Organisms/Footer';
 import ArticleCard from './components/Organisms/ArticleCard';
 import SideBar from './components/Organisms/SideBar';
 import styles from './index.module.css';
+import parser from '../mdParser';
 
 type Props = {
   data: QueryResult;
@@ -42,7 +43,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
               <ArticleCard
                 title={node.title}
                 date={node.date}
-                body={node.body.body}
+                body={parser(node.body.body)}
                 tags={node.tags}
                 slug={node.slug}
                 key={node.id}

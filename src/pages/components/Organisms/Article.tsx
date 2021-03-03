@@ -33,16 +33,23 @@ const Article: FC<Props> = (props) => {
           </Grid>
         ))}
       </Grid>
-      <main className={styles.main}>{body}</main>
+      <main
+        dangerouslySetInnerHTML={{ __html: body }}
+        className={styles.main}
+      />
       <Grid container item justify="space-between" xs={12}>
         <Grid item>
-          <Link to={`/blog/posts/${prev?.slug}`}>{prev?.title}</Link>
+          <Link to={`/blog/posts/${prev?.slug}`} className={styles.link}>{prev?.title}</Link>
         </Grid>
         <Grid item>
-          <Link to="/">HOME</Link>
+          <Link to="/" className={styles.link}>
+            HOME
+          </Link>
         </Grid>
         <Grid item>
-          <Link to={`/blog/posts/${next?.slug}`}>{next?.title}</Link>
+          <Link to={`/blog/posts/${next?.slug}`} className={styles.link}>
+            {next?.title}
+          </Link>
         </Grid>
       </Grid>
     </div>

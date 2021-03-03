@@ -1,6 +1,6 @@
-require('dotenv').config()
-const accessToken = process.env.ACCESS_TOKEN
-const spaceId = process.env.SPACE_ID
+require('dotenv').config();
+const accessToken = process.env.ACCESS_TOKEN;
+const spaceId = process.env.SPACE_ID;
 
 module.exports = {
   siteMetadata: {
@@ -24,16 +24,17 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     //'gatsby-plugin-sitemap',
     //'gatsby-transformer-sharp',
+    'gatsby-transformer-remark',
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-material-ui`
+    `gatsby-plugin-material-ui`,
     // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'images',
-    //     path: './src/images/',
-    //   },
-    //   __key: 'images',
-    //   ignore: [`${__dirname}/types/*.ts`] 
+    //    resolve: 'gatsby-source-filesystem',
+    //    options: {
+    //      name: 'images',
+    //      path: './src/images/',
+    //    },
+    //    __key: 'images',
+    //    ignore: [`${__dirname}/types/*.ts`]
     // },
     //"gatsby-plugin-graphql-codegen"
   ],

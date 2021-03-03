@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styles from "./Footer.module.css";
-import theme from "../../../styles/theme"
-import {MuiThemeProvider} from '@material-ui/core/styles'
+
 
 const Footer: FC = () => (
   <footer className={styles.footer}>

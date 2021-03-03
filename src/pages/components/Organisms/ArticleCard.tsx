@@ -21,6 +21,7 @@ export type Props = {
 const Article: FC<Props> = (props) => {
   const { title, date, tags, body, slug } = props;
   const ymd = new Date(date).toLocaleString().split(' ')[0];
+  const summary = body.split("<h2")[0];
 
   return (
     <div className={styles.card}>
@@ -42,7 +43,12 @@ const Article: FC<Props> = (props) => {
               ))}
             </Grid>
           </div>
-          <main className={styles.main}>{body}</main>
+          <main
+            dangerouslySetInnerHTML={{ __html: summary }}
+            className={styles.main}
+          >
+       
+          </main>
         </Paper>
       </Link>
     </div>

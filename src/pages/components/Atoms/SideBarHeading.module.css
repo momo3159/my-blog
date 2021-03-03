@@ -1,12 +1,13 @@
 .title {
   position: relative;
 	margin-bottom: 10px;
+	border-bottom: #9a67ea;
 }
 
 .title:after {
   content: "";
 	display: block;
-	height: 4px;
-	background: linear-gradient(to right, #9a67ea, transparent);
+	height: 2px;
+	background: linear-gradient(to right, #9a67ea, #2196f3);
 }
 
