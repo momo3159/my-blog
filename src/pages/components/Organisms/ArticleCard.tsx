@@ -20,12 +20,13 @@ export type Props = {
 
 const Article: FC<Props> = (props) => {
   const { title, date, tags, body, slug } = props;
+  const ymd = new Date(date).toLocaleString().split(' ')[0];
 
   return (
     <div className={styles.card}>
       <Link to={`/blog/posts/${slug}`}>
         <Paper variant="outlined" elevation={2}>
-          <time className={styles.date}>{date}</time>
+          <time className={styles.date}>{ymd}</time>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.container}>
             <Grid container spacing={1}>

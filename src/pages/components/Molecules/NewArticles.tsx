@@ -11,6 +11,7 @@ type Node = {
   id: string;
   slug: string;
   title: string;
+  date: string;
 };
 
 const NewArticles: FC = () => (
@@ -30,21 +31,25 @@ const NewArticles: FC = () => (
     render={(data: QueryResult) => (
       <>
         <SideBarHeading title="最新記事" />
-        {data.allContentfulBlogPost.nodes.map((node) => (
-          <>
-            <Link
-              to={`/blog/posts/${node.slug}/`}
-              className={styles.link}
-              key={node.id}
-            >
-              <time className={styles.date}>{node.date}</time>
-              <br />
-              <span>{node.title}</span>
-            </Link>
+        {data.allContentfulBlogPost.nodes.map((node) => {
+          const ymd = new Date(node.date).toLocaleString().split(' ')[0];
 
-            <hr />
-          </>
-        ))}
+          return (
+            <>
+              <Link
+                to={`/blog/posts/${node.slug}/`}
+                className={styles.link}
+                key={node.id}
+              >
+                <time className={styles.date}>{ymd}</time>
+                <br />
+                <span>{node.title}</span>
+              </Link>
+
+              <hr />
+            </>
+          );
+        })}
       </>
     )}
   />
