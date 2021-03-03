@@ -9,8 +9,11 @@ type Props = {
 };
 const THRESHOLD = 4; // currentIndexからTHRESHOLD分前からの番号のpaginatioを表示
 
-const range = (start: number, end: number): number[] =>
-  [...Array(end - start + 1).keys()].map((index) => index + start);
+const range = (start: number, end: number): number[] =>{
+  if(end - start + 1 <= 0) return [...Array(0).keys()].map((index) => index + start);
+   return [...Array(end - start + 1).keys()].map((index) => index + start);
+}
+ 
 
 const Pagination: FC<Props> = (props) => {
   const { totalPageNumber, currentIndex, slug } = props;
