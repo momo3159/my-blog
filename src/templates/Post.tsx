@@ -34,7 +34,6 @@ type Props = {
 
 const Post: FC<Props> = ({ data }) => {
   const { title, date, tags, body } = data.currentPost;
-  console.log(data.nextPost);
   let { nextPost: next, prevPost: prev } = data;
   if (next?.title.length > 10)
     next = {
@@ -47,7 +46,6 @@ const Post: FC<Props> = ({ data }) => {
       ...prev,
       title: `${prev?.title?.slice(0, 10)}...`,
     };
-  console.log(parser(body.body));
 
   return (
     <>

@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   }
 
-  const unit = 1;
+  const unit = 6;
   const totalPageNumber = Math.ceil(allContentfulBlogPost.totalCount / unit);
   range(2, totalPageNumber).map((index) => {
     createPage({

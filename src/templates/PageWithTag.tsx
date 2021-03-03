@@ -44,7 +44,9 @@ type Tag = {
 const PageWithTag: FC<Props> = ({ data, pageContext }) => {
   const { nodes } = data.allContentfulBlogPost;
   const { tagName, skip, unit, totalTags } = pageContext;
-  console.log(totalTags)
+  console.log(skip);
+  console.log(Math.floor(totalTags / 6) + 1);
+
   return (
     <>
       <Header />
@@ -68,7 +70,7 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
             <Grid container item xs={12} justify="center">
               <Pagination
                 currentIndex={Math.floor(skip / unit) + 1}
-                totalPageNumber={totalTags}
+                totalPageNumber={Math.floor(totalTags / 6) + 1}
                 slug={tagName}
               />
             </Grid>

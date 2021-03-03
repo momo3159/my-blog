@@ -12,7 +12,6 @@ const SiteLinks: FC = () => {
     { name: 'GitHub', url: 'https://github.com/momo3159/' },
     { name: 'AtCoder', url: 'https://atcoder.com/tommy3/' },
   ];
-  console.log(styles);
 
   return (
     <>
