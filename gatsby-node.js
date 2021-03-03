@@ -2,7 +2,7 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve('src/Templates/post.tsx');
+  const blogPostTemplate = path.resolve('src/Templates/Post.tsx');
   // const tagsTemplate = path.resolve('src/templates/template-tags.tsx');
   const blogPageTemplate = path.resolve('src/Templates/Page.tsx');
   const blogPageWithTagTemplate = path.resolve('src/Templates/PageWithTag.tsx');
