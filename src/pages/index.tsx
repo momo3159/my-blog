@@ -63,7 +63,7 @@ export default IndexPage;
 
 export const topPageQuery = graphql`
   query {
-    allContentfulBlogPost(limit: 6) {
+    allContentfulBlogPost(sort: {order: DESC, fields: date}, limit: 6) {
       totalCount
       nodes {
         id

@@ -17,3 +17,6 @@ a {
   text-decoration: none;
 }
 
+#text {
+  word-wrap:break-word;
+}

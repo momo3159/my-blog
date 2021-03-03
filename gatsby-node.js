@@ -2,10 +2,10 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve('src/templates/post.tsx');
+  const blogPostTemplate = path.resolve('src/Templates/post.tsx');
   // const tagsTemplate = path.resolve('src/templates/template-tags.tsx');
-  const blogPageTemplate = path.resolve('src/templates/Page.tsx');
-  const blogPageWithTagTemplate = path.resolve('src/templates/PageWithTag.tsx');
+  const blogPageTemplate = path.resolve('src/Templates/Page.tsx');
+  const blogPageWithTagTemplate = path.resolve('src/Templates/PageWithTag.tsx');
   const { data } = await graphql(`
     query {
       allContentfulBlogPost(sort: { order: DESC, fields: date }) {
@@ -23,19 +23,30 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  const { allContentfulBlogPost, allTags } = data;
 
-  allContentfulBlogPost?.nodes.map((node) => {
-    const { id, slug } = node;
+  //
+  const { allContentfulBlogPost, allTags } = data;
+  const { nodes } = allContentfulBlogPost;
+
+  for (let i = 0; i < nodes.length; i++) {
+    const { id, slug } = nodes[i];
+    console.log('currnetID', id);
+    const context = { prevId: '', currentId: id, nextId: '' };
+    if (i === 0) {
+      context.nextId = nodes[i + 1].id;
+    } else if (i + 1 === nodes.length) {
+      context.prevId = nodes[i - 1].id;
+    } else {
+      context.prevId = nodes[i - 1].id;
+      context.nextId = nodes[i + 1].id;
+    }
 
     createPage({
       path: `/blog/posts/${slug}`,
       component: blogPostTemplate,
-      context: {
-        id,
-      },
+      context,
     });
-  });
+  }
 
   const unit = 1;
   const totalPageNumber = Math.ceil(allContentfulBlogPost.totalCount / unit);
@@ -49,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-  console.log(range(1, 4))
+
   allTags.group.forEach((tag) => {
     console.log(tag.fieldValue);
     const totalPageNumberInCategory = Math.ceil(tag.totalCount / unit);
