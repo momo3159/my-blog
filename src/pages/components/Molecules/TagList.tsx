@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
 import Tag from '../Atoms/Tag';
+import SideBarHeading from '../Atoms/SideBarHeading';
 
 type QueryResult = {
   allContentfulBlogPost: {
@@ -50,7 +51,7 @@ const TagList: FC = () => (
 
       return (
         <>
-          <h3>タグ</h3>
+          <SideBarHeading title="タグ" />
           <Grid container direction="row" justify="flex-start" spacing={1}>
             {allContentfulTag.nodes.map((tag) => (
               <Grid item>

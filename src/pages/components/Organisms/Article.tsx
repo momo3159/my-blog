@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+import Grid from '@material-ui/core/Grid';
 import Tag from '../Atoms/Tag';
+
+import styles from './Article.module.css';
 
 type Tag = {
   tagName: string;
@@ -17,12 +20,16 @@ const Article: FC<Props> = (props) => {
 
   return (
     <div>
-      <p>{date}</p>
-      <h1>{title}</h1>
-      {tags?.map((tag) => (
-        <Tag tagName={tag.tagName} slug={tag.slug} key={tag.tagName} />
-      ))}
-      <main>{body}</main>
+      <time className={styles.date}>{date}</time>
+      <h1 className={styles.title}>{title}</h1>
+      <Grid container spacing={2}>
+        {tags?.map((tag) => (
+          <Grid item>
+            <Tag tagName={tag.tagName} slug={tag.slug} key={tag.tagName} />
+          </Grid>
+        ))}
+      </Grid>
+      <main className={styles.main}>{body}</main>
     </div>
   );
 };

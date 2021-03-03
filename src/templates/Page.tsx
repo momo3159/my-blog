@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
+import Grid from '@material-ui/core/Grid';
 import Header from '../pages/components/Organisms/Header';
 import Footer from '../pages/components/Organisms/Footer';
-import Article from '../pages/components/Organisms/Article';
+import ArticleCard from '../pages/components/Organisms/ArticleCard';
+import SideBar from '../pages/components/Organisms/SideBar';
+import styles from './Page.module.css';
 
 type Props = {
   data: QueryResult;
@@ -27,27 +30,40 @@ type Tag = {
   slug: string;
 };
 
-const Post: FC<Props> = ({ data }) => {
+const Page: FC<Props> = ({ data }) => {
   const { nodes } = data.allContentfulBlogPost;
 
   return (
     <>
       <Header />
-      {nodes.map((node) => (
-        <Article
-          title={node.title}
-          date={node.date}
-          tags={node.tags}
-          body={node.body.body}
-          key={node.id}
-        />
-      ))}
+
+      <Grid container spacing={2}>
+        <Grid container item justify="flex-end" xs={12} md={8}>
+          {nodes.map((node) => (
+            <Grid item xs={12} md={8}>
+              <div className={styles.card}>
+                <ArticleCard
+                  title={node.title}
+                  date={node.date}
+                  body={node.body.body}
+                  tags={node.tags}
+                  slug={node.slug}
+                  key={node.id}
+                />
+              </div>
+            </Grid>
+          ))}
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <SideBar />
+        </Grid>
+      </Grid>
       <Footer />
     </>
   );
 };
 
-export default Post;
+export default Page;
 export const query = graphql`
   query($skip: Int, $unit: Int) {
     allContentfulBlogPost(limit: $unit, skip: $skip) {

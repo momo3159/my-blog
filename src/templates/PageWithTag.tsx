@@ -30,7 +30,7 @@ type Tag = {
   slug: string;
 };
 
-const Post: FC<Props> = ({ data }) => {
+const PageWithTag: FC<Props> = ({ data }) => {
   const { nodes } = data.allContentfulBlogPost;
 
   return (
@@ -38,9 +38,9 @@ const Post: FC<Props> = ({ data }) => {
       <Header />
 
       <Grid container spacing={2}>
-        <Grid container item justify="flex-end" xs={8}>
+        <Grid container item justify="flex-end" xs={12} md={8}>
           {nodes.map((node) => (
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
               <div className={styles.card}>
                 <ArticleCard
                   title={node.title}
@@ -54,7 +54,7 @@ const Post: FC<Props> = ({ data }) => {
             </Grid>
           ))}
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={12} md={2}>
           <SideBar />
         </Grid>
       </Grid>
@@ -63,7 +63,7 @@ const Post: FC<Props> = ({ data }) => {
   );
 };
 
-export default Post;
+export default PageWithTag;
 export const query = graphql`
   query($tagName: String, $skip: Int, $unit: Int) {
     allContentfulBlogPost(

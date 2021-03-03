@@ -1,0 +1,14 @@
+.date {
+  font-size: 13px;
+  color: #bdbdbd;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.main {
+  margin-top: 10px;
+  word-wrap:break-word;
+}

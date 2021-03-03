@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import SideBarHeading from '../Atoms/SideBarHeading';
 import styles from './NewArticles.module.css';
 
 type QueryResult = {
@@ -28,7 +29,7 @@ const NewArticles: FC = () => (
     `}
     render={(data: QueryResult) => (
       <>
-        <h3>最新記事</h3>
+        <SideBarHeading title="最新記事" />
         {data.allContentfulBlogPost.nodes.map((node) => (
           <>
             <Link
