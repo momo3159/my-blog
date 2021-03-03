@@ -1,5 +1,6 @@
 .title {
   position: relative;
+	margin-bottom: 10px;
 }
 
 .title:after {
@@ -8,3 +9,4 @@
 	height: 4px;
 	background: linear-gradient(to right, #9a67ea, transparent);
 }
+

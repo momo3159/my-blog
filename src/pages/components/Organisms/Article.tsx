@@ -19,7 +19,7 @@ const Article: FC<Props> = (props) => {
   const { title, date, tags, body } = props;
 
   return (
-    <div>
+    <div className={styles.article}>
       <time className={styles.date}>{date}</time>
       <h1 className={styles.title}>{title}</h1>
       <Grid container spacing={2}>

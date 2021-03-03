@@ -34,7 +34,6 @@ type Tag = {
 const IndexPage: React.FC<Props> = ({ data }) => (
   <>
     <Header />
-
     <Grid container spacing={2}>
       <Grid container item justify="flex-end" xs={12} md={8}>
         {data?.allContentfulBlogPost.nodes.map((node) => (
