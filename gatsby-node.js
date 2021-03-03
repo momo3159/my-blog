@@ -3,7 +3,6 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve('src/templates/Post.tsx');
-  // const tagsTemplate = path.resolve('src/templates/template-tags.tsx');
   const blogPageTemplate = path.resolve('src/templates/Page.tsx');
   const blogPageWithTagTemplate = path.resolve('src/templates/PageWithTag.tsx');
   const { data } = await graphql(`
@@ -24,13 +23,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  //
   const { allContentfulBlogPost, allTags } = data;
   const { nodes } = allContentfulBlogPost;
 
   for (let i = 0; i < nodes.length; i++) {
     const { id, slug } = nodes[i];
-    console.log('currnetID', id);
     const context = { prevId: '', currentId: id, nextId: '' };
     if (i === 0) {
       context.nextId = nodes[i + 1].id;
@@ -50,35 +47,32 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const unit = 6;
   const totalPageNumber = Math.ceil(allContentfulBlogPost.totalCount / unit);
-  range(2, totalPageNumber).map((index) => {
+
+  for (let i = 2; i <= totalPageNumber; i++) {
+    console.log(unit * index - 1);
     createPage({
       path: `/blog/pages/${index}`,
       component: blogPageTemplate,
       context: {
-        skip: unit * index - 1,
+        skip: unit * (i - 1),
         unit,
       },
     });
-  });
+  }
 
   allTags.group.forEach((tag) => {
-    console.log(tag.totalCount);
     const totalPageNumberInCategory = Math.ceil(tag.totalCount / unit);
-    range(1, totalPageNumberInCategory).map((index) => {
+    for (let i = 1; i <= totalPageNumberInCategory; i++) {
       createPage({
         path: `/blog/${tag.fieldValue}/${index}`,
         component: blogPageWithTagTemplate,
         context: {
-          skip: unit * index - 1,
+          skip: unit * (index - 1),
           unit,
           tagName: tag.fieldValue,
-          totalTags: tag.totalCount
+          totalTags: tag.totalCount,
         },
       });
-    });
+    }
   });
-};
-
-const range = (start, end) => {
-  return [...Array(end - start + 1).keys()].map((index) => index + start);
 };

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styles from './SiteLinks.Module.css';
+import styles from './SiteLinks.module.css';
 import SideBarHeading from '../Atoms/SideBarHeading';
 
 const SiteLinks: FC = () => {

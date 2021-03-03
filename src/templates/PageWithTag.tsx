@@ -44,8 +44,6 @@ type Tag = {
 const PageWithTag: FC<Props> = ({ data, pageContext }) => {
   const { nodes } = data.allContentfulBlogPost;
   const { tagName, skip, unit, totalTags } = pageContext;
-  console.log(skip);
-  console.log(Math.floor(totalTags / 6) + 1);
 
   return (
     <>
