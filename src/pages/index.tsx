@@ -5,7 +5,7 @@ import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
 import ArticleCard from './components/Organisms/ArticleCard';
 import SideBar from './components/Organisms/SideBar';
-import styles from './index.module.css';
+import styles from './Index.module.css';
 import parser from '../mdParser';
 import Pagination from './components/Organisms/Pagination';
 
