@@ -1,11 +1,13 @@
 .header {
   background-color: #212121;
+  margin-bottom: 60px;
 }
 
 .p {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 30px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 15px;
 }
