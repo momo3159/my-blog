@@ -7,9 +7,16 @@ import ArticleCard from '../pages/components/Organisms/ArticleCard';
 import SideBar from '../pages/components/Organisms/SideBar';
 import styles from './Page.module.css';
 import parser from '../mdParser';
+import Pagination from '../pages/components/Organisms/Pagination';
 
 type Props = {
   data: QueryResult;
+  pageContext: PageContext;
+};
+
+type PageContext = {
+  skip: number;
+  unit: number;
 };
 type QueryResult = {
   allContentfulBlogPost: {
@@ -31,8 +38,10 @@ type Tag = {
   slug: string;
 };
 
-const Page: FC<Props> = ({ data }) => {
-  const { nodes } = data.allContentfulBlogPost;
+const Page: FC<Props> = ({ data, pageContext }) => {
+  const { nodes, totalCount } = data.allContentfulBlogPost;
+  const { skip, unit } = pageContext;
+  console.log(pageContext);
 
   return (
     <>
@@ -40,8 +49,8 @@ const Page: FC<Props> = ({ data }) => {
 
       <Grid container spacing={2}>
         <Grid container item justify="flex-end" xs={12} md={8}>
-          {nodes.map((node) => (
-            <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={8}>
+            {nodes.map((node) => (
               <div className={styles.card}>
                 <ArticleCard
                   title={node.title}
@@ -52,8 +61,15 @@ const Page: FC<Props> = ({ data }) => {
                   key={node.id}
                 />
               </div>
+            ))}
+
+            <Grid container item xs={12} justify="center">
+              <Pagination
+                currentIndex={skip / unit + 1}
+                totalPageNumber={totalCount}
+              />
             </Grid>
-          ))}
+          </Grid>
         </Grid>
         <Grid item xs={12} md={2}>
           <SideBar />

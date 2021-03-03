@@ -1,0 +1,17 @@
+.button {
+  margin-top: 20px;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-left: 0px;
+}
+
+.current {
+  color: #9a67ea;
+  margin-top: 20px;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-left: 0px;
+}
+.button:hover {
+  color: #2196f3;
+}
