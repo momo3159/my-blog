@@ -10,7 +10,9 @@ type Props = {
 const THRESHOLD = 4; // currentIndexからTHRESHOLD分前からの番号のpaginatioを表示
 
 const range = (start: number, end: number): (number[] | []) =>{
-   return [...Array(Math.max(0, end - start + 1)).keys()].map((index) => index + start);
+  const tmp = [...Array(Math.max(0, end - start + 1)).keys()];
+  if(tmp.length === 0) return [1]
+  return tmp.map((index) => index + start);
 }
  
 
