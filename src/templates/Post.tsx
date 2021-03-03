@@ -64,10 +64,8 @@ const Post: FC<Props> = ({ data }) => {
             property: 'og:image',
             content: `https://og-image-five-mu.vercel.app/${title}.jpeg?theme=dark&md=1&fontSize=100px`,
           },
-          { name: 'twitter:title', content: title },
           { name: 'twitter:card', content: 'summary' },
-          { name: 'twitter:site', content: '@Tomm7282' },
-          { name: 'twitter:player', content: '@Tomm7282' },
+
         ]}
       />
 
