@@ -21,7 +21,7 @@ export type Props = {
 const Article: FC<Props> = (props) => {
   const { title, date, tags, body, slug } = props;
   const ymd = new Date(date).toLocaleString().split(' ')[0];
-  const summary = body.split("<h2")[0];
+  const summary = body?.split("<h2")[0];
 
   return (
     <div className={styles.card}>
