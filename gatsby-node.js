@@ -2,10 +2,10 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve('src/Templates/Post.tsx');
+  const blogPostTemplate = path.resolve('src/templates/Post.tsx');
   // const tagsTemplate = path.resolve('src/templates/template-tags.tsx');
-  const blogPageTemplate = path.resolve('src/Templates/Page.tsx');
-  const blogPageWithTagTemplate = path.resolve('src/Templates/PageWithTag.tsx');
+  const blogPageTemplate = path.resolve('src/templates/Page.tsx');
+  const blogPageWithTagTemplate = path.resolve('src/templates/PageWithTag.tsx');
   const { data } = await graphql(`
     query {
       allContentfulBlogPost(sort: { order: DESC, fields: date }) {
