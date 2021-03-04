@@ -52,7 +52,7 @@ const Post: FC<Props> = ({ data }) => {
       <Helmet
         title={title}
         meta={[
-          { property: 'og-title', content: title },
+          { property: 'og:title', content: title },
           { property: 'og:type', content: 'blog' },
           {
             property: 'og:url',
