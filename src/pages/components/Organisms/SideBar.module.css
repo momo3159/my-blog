@@ -2,6 +2,8 @@
   .sidebar{ 
     width: 80%;
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
 
   }
 }

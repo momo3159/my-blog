@@ -30,12 +30,12 @@ exports.createPages = async ({ graphql, actions }) => {
     const { id, slug } = nodes[i];
     const context = { prevId: '', currentId: id, nextId: '' };
     if (i === 0) {
-      context.nextId = nodes[i + 1].id;
+      context.nextId = nodes[i + 1]?.id;
     } else if (i + 1 === nodes.length) {
-      context.prevId = nodes[i - 1].id;
+      context.prevId = nodes[i - 1]?.id;
     } else {
-      context.prevId = nodes[i - 1].id;
-      context.nextId = nodes[i + 1].id;
+      context.prevId = nodes[i - 1]?.id;
+      context.nextId = nodes[i + 1]?.id;
     }
 
     createPage({
