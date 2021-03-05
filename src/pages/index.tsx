@@ -41,7 +41,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <>
       <Header />
-      <Grid container spacing={2}style={{paddingBottom: "20vh", width: "100%"}}>
+      <Grid container spacing={2} style={{paddingBottom: "20vh", width: "100%"}}>
         <Grid container item justify="flex-end" xs={12} md={8}>
           <Grid item xs={12} md={8}>
             {result.nodes.map((node) => (

@@ -70,7 +70,7 @@ const Post: FC<Props> = ({ data }) => {
       />
 
       <Header />
-      <Grid container spacing={6}>
+      <Grid container spacing={6} style={{paddingBottom: "20vh", width: "100%"}}>
         <Grid container item xs={12} md={8} justify="flex-end">
           <Grid container item xs={12} md={8}>
             <Article
@@ -83,7 +83,7 @@ const Post: FC<Props> = ({ data }) => {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={2} style={{width: "80%"}}>
           <SideBar />
         </Grid>
       </Grid>

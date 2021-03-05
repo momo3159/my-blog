@@ -49,7 +49,11 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
     <>
       <Header />
       <h1 className={styles.tagHeading}>Tag: {tagName}</h1>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        style={{ paddingBottom: '20vh', width: '100%' }}
+      >
         <Grid container item justify="flex-end" xs={12} md={8}>
           <Grid item xs={12} md={8}>
             {nodes.map((node) => (
@@ -73,7 +77,7 @@ const PageWithTag: FC<Props> = ({ data, pageContext }) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={2} style={{ width: '80%' }}>
           <SideBar />
         </Grid>
       </Grid>

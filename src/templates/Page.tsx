@@ -46,7 +46,7 @@ const Page: FC<Props> = ({ data, pageContext }) => {
     <>
       <Header />
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{paddingBottom: "20vh", width: "100%"}}>
         <Grid
           container
           item
@@ -76,7 +76,7 @@ const Page: FC<Props> = ({ data, pageContext }) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={2} style={{width: "80%"}}>
           <SideBar />
         </Grid>
       </Grid>
