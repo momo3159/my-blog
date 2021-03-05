@@ -42,13 +42,19 @@ const Page: FC<Props> = ({ data, pageContext }) => {
   const { nodes, totalCount } = data.allContentfulBlogPost;
   const { skip, unit } = pageContext;
 
-
   return (
     <>
       <Header />
 
       <Grid container spacing={2}>
-        <Grid container item justify="flex-end" xs={12} md={8}>
+        <Grid
+          container
+          item
+          justify="flex-end"
+          xs={12}
+          md={8}
+          className={styles.container}
+        >
           <Grid item xs={12} md={8}>
             {nodes.map((node) => (
               <div className={styles.card} key={node.id}>
