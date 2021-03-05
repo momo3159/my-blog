@@ -8,10 +8,10 @@
 }
 
 .footer {
-  bottom: -100;
-  margin-top: 10vh;
+  bottom: 0;
   position: absolute;
   width: 100vw;
   /* margin-bottom: 0; */
   background-color: #212121;
 }
+

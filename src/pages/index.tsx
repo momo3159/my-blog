@@ -41,49 +41,22 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <>
       <Header />
-      <Grid container spacing={2}>
+      <Grid container spacing={2}style={{paddingBottom: "20vh"}}>
         <Grid container item justify="flex-end" xs={12} md={8}>
           <Grid item xs={12} md={8}>
             {result.nodes.map((node) => (
               <>
-              <div className={styles.card}>
-                <ArticleCard
-                  title={node?.title}
-                  date={node?.date}
-                  body={parser(node?.body?.body)}
-                  tags={node?.tags}
-                  slug={node?.slug}
-                  key={node?.id}
-                />
-              </div>
-              <div className={styles.card} key={node.id}>
-              <ArticleCard
-                title={node.title}
-                date={node.date}
-                body={parser(node.body.body)}
-                tags={node.tags}
-                slug={node.slug}
-              />
-            </div>
-            <div className={styles.card} key={node.id}>
-              <ArticleCard
-                title={node.title}
-                date={node.date}
-                body={parser(node.body.body)}
-                tags={node.tags}
-                slug={node.slug}
-              />
-            </div>
-            <div className={styles.card} key={node.id}>
-              <ArticleCard
-                title={node.title}
-                date={node.date}
-                body={parser(node.body.body)}
-                tags={node.tags}
-                slug={node.slug}
-              />
-            </div>
-            </>
+                <div className={styles.card}>
+                  <ArticleCard
+                    title={node?.title}
+                    date={node?.date}
+                    body={parser(node?.body?.body)}
+                    tags={node?.tags}
+                    slug={node?.slug}
+                    key={node?.id}
+                  />
+                </div>
+              </>
             ))}
             <Grid container item xs={12} justify="center">
               <Pagination currentIndex={1} totalPageNumber={totalPage} />
