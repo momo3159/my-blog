@@ -8,6 +8,7 @@ import Footer from '../pages/components/Organisms/Footer';
 import Article from '../pages/components/Organisms/Article';
 import parser from '../mdParser';
 import marked from 'marked';
+import "prismjs/themes/prism-okaidia.css"
 
 type Tag = {
   tagName: string;
