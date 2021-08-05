@@ -38,7 +38,7 @@ const Article: FC<Props> = (props) => {
         ))}
       </Grid>
       <main
-        dangerouslySetInnerHTML={{ __html: parser(body, {renderer}) }}
+        dangerouslySetInnerHTML={{ __html: parser(body) }}
         className={styles.main}
       />
       <Grid container item justify="space-between" xs={12}>
