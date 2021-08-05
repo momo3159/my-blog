@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import Tag from '../Atoms/Tag';
 
 import styles from './Article.module.css';
-import marked from 'marked';
 import parser from '../../../mdParser';
 
 
@@ -24,7 +23,6 @@ export type Props = {
 const Article: FC<Props> = (props) => {
   const { title, date, tags, body, prev, next } = props;
   const ymd = new Date(date).toLocaleString().split(' ')[0];
-  const renderer = new marked.Renderer()
 
   return (
     <div className={styles.article}>
