@@ -3,7 +3,7 @@ import Prism from "prismjs"
 
 marked.setOptions({
   highlight(code, lang) {
-    return Prism.highlight(code, lang)
+    return Prism.highlight(code, lang, lang)
   },
   pedantic: false,
   gfm: true,
