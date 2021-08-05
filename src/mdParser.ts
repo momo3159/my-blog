@@ -1,9 +1,9 @@
 import marked from 'marked';
-import highlightjs from 'highlight.js';
+import Prism from "prismjs"
 
 marked.setOptions({
   highlight(code, lang) {
-    return highlightjs.highlightAuto(code, [lang]).value;
+    return Prism.highlight(code, lang)
   },
   pedantic: false,
   gfm: true,
