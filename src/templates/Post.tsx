@@ -7,8 +7,6 @@ import Header from '../pages/components/Organisms/Header';
 import Footer from '../pages/components/Organisms/Footer';
 import Article from '../pages/components/Organisms/Article';
 import parser from '../mdParser';
-import marked from 'marked';
-import "prismjs/themes/prism-tomorrow.css"
 
 type Tag = {
   tagName: string;
@@ -49,8 +47,6 @@ const Post: FC<Props> = ({ data }) => {
       title: `${prev?.title?.slice(0, 10)}...`,
     };
 
-    const r = new marked.Renderer()
-
   return (
     <>
       <Helmet
@@ -81,7 +77,7 @@ const Post: FC<Props> = ({ data }) => {
               title={title}
               date={date}
               tags={tags}
-              body={body.body}
+              body={parser(body.body)}
               prev={prev}
               next={next}
             />
