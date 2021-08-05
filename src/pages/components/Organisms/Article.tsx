@@ -4,6 +4,9 @@ import { Link } from 'gatsby';
 import Tag from '../Atoms/Tag';
 
 import styles from './Article.module.css';
+import marked from 'marked';
+import parser from '../../../mdParser';
+
 
 type Tag = {
   tagName: string;
@@ -21,6 +24,7 @@ export type Props = {
 const Article: FC<Props> = (props) => {
   const { title, date, tags, body, prev, next } = props;
   const ymd = new Date(date).toLocaleString().split(' ')[0];
+  const renderer = new marked.Renderer()
 
   return (
     <div className={styles.article}>
@@ -34,7 +38,7 @@ const Article: FC<Props> = (props) => {
         ))}
       </Grid>
       <main
-        dangerouslySetInnerHTML={{ __html: body }}
+        dangerouslySetInnerHTML={{ __html: parser(body, {renderer}) }}
         className={styles.main}
       />
       <Grid container item justify="space-between" xs={12}>
