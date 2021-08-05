@@ -3,7 +3,7 @@ import highlightjs from 'highlight.js';
 
 marked.setOptions({
   highlight(code, lang) {
-    return highlightjs.highlightAuto(code, ["Go"]).value;
+    return highlightjs.highlightAuto(code, [lang]).value;
   },
   pedantic: false,
   gfm: true,
