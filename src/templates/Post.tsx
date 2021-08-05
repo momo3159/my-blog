@@ -81,7 +81,7 @@ const Post: FC<Props> = ({ data }) => {
               title={title}
               date={date}
               tags={tags}
-              body={parser(body.body, {renderer: r})}
+              body={parser(body.body)}
               prev={prev}
               next={next}
             />
