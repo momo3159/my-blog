@@ -3,8 +3,7 @@ import highlightjs from 'highlight.js';
 
 marked.setOptions({
   highlight(code, lang) {
-    const language = highlightjs.getLanguage(lang) ? lang : 'plaintext'
-    return highlightjs.highlightAuto(code, [lang]).value;
+    return highlightjs.highlightAuto(code, ["Go"]).value;
   },
   pedantic: false,
   gfm: true,
