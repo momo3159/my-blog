@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   for (let i = 2; i <= totalPageNumber; i++) {
     createPage({
-      path: `/blog/pages/${index}`,
+      path: `/blog/pages/${i}`,
       component: blogPageTemplate,
       context: {
         skip: unit * (i - 1),
