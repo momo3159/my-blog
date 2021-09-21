@@ -42,7 +42,7 @@ const Pagination: FC<Props> = (props) => {
         );
       } else {
         elems.push(
-          <Link to={`${path}/${pageNumber}`} className={style}>
+          <Link to={`/${pageNumber}`} className={style}>
             {pageNumber}
           </Link>,
         );
